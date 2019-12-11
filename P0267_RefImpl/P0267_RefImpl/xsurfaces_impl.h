@@ -280,6 +280,13 @@ namespace std {
 				inline void basic_output_surface<GraphicsSurfaces>::size_change_callback(const function<void(basic_output_surface& sfc)>& fn) {
 					GraphicsSurfaces::surfaces::size_change_callback(_Data, fn);
 				}
+
+                template <class GraphicsSurfaces>
+                inline void basic_output_surface<GraphicsSurfaces>::events_callback(typename GraphicsSurfaces::_EventCallBack fn) {
+
+                    GraphicsSurfaces::surfaces::event_callback(_Data,fn );
+                }
+
 				template <class GraphicsSurfaces>
 				inline void basic_output_surface<GraphicsSurfaces>::dimensions(basic_display_point<graphics_math_type> dp) {
 					GraphicsSurfaces::surfaces::dimensions(_Data, dp);

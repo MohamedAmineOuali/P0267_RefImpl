@@ -241,6 +241,7 @@ namespace std {
 						};
 
 
+                        class _EventCallBack;
 						// brush
 
 						struct brushes {
@@ -535,7 +536,11 @@ namespace std {
 							static void fill(output_surface_data_type& data, const basic_brush<_Graphics_surfaces_type>& b, const basic_interpreted_path<_Graphics_surfaces_type>& pg, const basic_brush_props<_Graphics_surfaces_type>& bp, const basic_render_props<_Graphics_surfaces_type>& rp, const basic_clip_props<_Graphics_surfaces_type>& cl);
 							static void mask(output_surface_data_type& data, const basic_brush<_Graphics_surfaces_type>& b, const basic_brush<_Graphics_surfaces_type>& mb, const basic_brush_props<_Graphics_surfaces_type>& bp, const basic_mask_props<_Graphics_surfaces_type>& mp, const basic_render_props<_Graphics_surfaces_type>& rp, const basic_clip_props<_Graphics_surfaces_type>& cl);
 
-							// display_surface common functions
+							//events functions
+                            static void event_callback(output_surface_data_type& data, _EventCallBack & e);
+
+
+                            // display_surface common functions
 							static void draw_callback(output_surface_data_type& data, function<void(basic_output_surface<_Graphics_surfaces_type>&)>);
 							static void size_change_callback(output_surface_data_type& data, function<void(basic_output_surface<_Graphics_surfaces_type>&)>);
 							static void user_scaling_callback(output_surface_data_type& data, function<basic_bounding_box<GraphicsMath>(const basic_output_surface<_Graphics_surfaces_type>&, bool&)>);
@@ -559,6 +564,8 @@ namespace std {
 							static basic_image_surface<_Graphics_surfaces_type> copy_surface(basic_output_surface<_Graphics_surfaces_type>& sfc) noexcept;
 							// Note: basic_unmanaged_output_surface intentionally not provided. 
 						};
+
+
 					};
 				}
 			}

@@ -44,7 +44,7 @@ add_library(io2d_cairo_sdl2
 	xio2d_cairo_sdl2_surfaces.h
 	xio2d_cairo_sdl2_surfaces_impl.h
 	xio2d_cairo_sdl2_unmanaged_output_surfaces.h
-)
+		xio2d_cairo_sdl2_event_callback.h)
 target_compile_features(io2d_cairo_sdl2 PUBLIC cxx_std_17)
 target_include_directories(io2d_cairo_sdl2 PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>

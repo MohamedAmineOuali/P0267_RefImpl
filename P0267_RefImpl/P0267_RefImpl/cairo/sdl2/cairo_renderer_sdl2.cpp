@@ -255,7 +255,7 @@ namespace std::experimental::io2d {
 					SDL_WINDOWPOS_CENTERED,
 					data.display_dimensions.x(),
 					data.display_dimensions.y(),
-					SDL_WINDOW_SHOWN
+					SDL_WINDOW_SHOWN|SDL_WINDOW_RESIZABLE
 				);
 				if (!data.window) {
 					throw ::std::system_error(::std::make_error_code(::std::errc::io_error), SDL_GetError());
@@ -290,7 +290,10 @@ namespace std::experimental::io2d {
 					data.previous_time = currentTime;
 
 					SDL_Event ev;
-					while (SDL_PollEvent(&ev)) {}
+					while (SDL_PollEvent(&ev)) {
+					    if(osd->event_callback)
+					        osd->event_callback(ev);
+					}
 
 					bool redraw = true;
 					if (data.rr == io2d::refresh_style::as_needed) {

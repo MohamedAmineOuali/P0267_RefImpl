@@ -45,7 +45,8 @@ namespace std::experimental::io2d {
 				_Display_surface_data_type data;
 				::std::function<void(basic_output_surface<_Graphics_surfaces_type>&)> draw_callback;
 				::std::function<void(basic_output_surface<_Graphics_surfaces_type>&)> size_change_callback;
-				::std::function<basic_bounding_box<GraphicsMath>(const basic_output_surface<_Graphics_surfaces_type>&, bool&)> user_scaling_callback;
+                ::std::function<void(SDL_Event&)> event_callback;
+                ::std::function<basic_bounding_box<GraphicsMath>(const basic_output_surface<_Graphics_surfaces_type>&, bool&)> user_scaling_callback;
 			};
 
 			template<class GraphicsMath>
@@ -313,6 +314,13 @@ namespace std::experimental::io2d {
 			inline bool _Cairo_graphics_surfaces<GraphicsMath>::surfaces::redraw_required(const output_surface_data_type& data) noexcept {
 				return _Ds_redraw_required<_Cairo_graphics_surfaces<GraphicsMath>>(data->data);
 			}
-		}
+
+            template<class GraphicsMath>
+            inline void _Cairo_graphics_surfaces<GraphicsMath>::surfaces::event_callback(output_surface_data_type& data, _EventCallBack & fn) {
+                data->event_callback = fn;
+            }
+
+
+        }
 	}
 }

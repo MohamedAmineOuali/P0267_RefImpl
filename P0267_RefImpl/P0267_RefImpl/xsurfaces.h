@@ -9,6 +9,7 @@
 //#endif
 #include <initializer_list>
 
+
 namespace std::experimental::io2d {
 	inline namespace v1 {
 		template <class GraphicsSurfaces>
@@ -271,7 +272,11 @@ namespace std::experimental::io2d {
 			void fill(const basic_brush<GraphicsSurfaces>& b, const basic_interpreted_path<GraphicsSurfaces>& ip, const optional<basic_brush_props<GraphicsSurfaces>>& bp = nullopt, const optional<basic_render_props<GraphicsSurfaces>>& rp = nullopt, const optional<basic_clip_props<GraphicsSurfaces>>& cl = nullopt);
 			void mask(const basic_brush<GraphicsSurfaces>& b, const basic_brush<GraphicsSurfaces>& mb, const optional<basic_brush_props<GraphicsSurfaces>>& bp = nullopt, const optional<basic_mask_props<GraphicsSurfaces>>& mp = nullopt, const optional<basic_render_props<GraphicsSurfaces>>& rp = nullopt, const optional<basic_clip_props<GraphicsSurfaces>>& cl = nullopt);
 
-			// display functions
+			// event functions
+            void events_callback(typename GraphicsSurfaces::_EventCallBack fn);
+
+
+            // display functions
 			void draw_callback(const function<void(basic_output_surface& sfc)>& fn);
 			void size_change_callback(const function<void(basic_output_surface& sfc)>& fn);
 			void dimensions(basic_display_point<graphics_math_type> dp);
