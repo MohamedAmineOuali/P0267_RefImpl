@@ -33,6 +33,7 @@ namespace std::experimental::io2d {
             inline void _Ds_dimensions(typename GraphicsSurfaces::surfaces::_Display_surface_data_type& data, const basic_display_point<typename GraphicsSurfaces::graphics_math_type>& val) {
                 if (val != data.back_buffer.dimensions) {
                     // Recreate the render target that is drawn to the displayed surface
+                    data.display_dimensions=val;
                     data.back_buffer = ::std::move(GraphicsSurfaces::surfaces::create_image_surface(data.back_buffer.format, val.x(), val.y()));
                 }
             }

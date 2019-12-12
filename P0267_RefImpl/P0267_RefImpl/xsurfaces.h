@@ -278,7 +278,7 @@ namespace std::experimental::io2d {
 
             // display functions
 			void draw_callback(const function<void(basic_output_surface& sfc)>& fn);
-			void size_change_callback(const function<void(basic_output_surface& sfc)>& fn);
+			void size_change_callback(const function<void(basic_output_surface&, basic_display_point<graphics_math_type>&&)>& fn);
 			void dimensions(basic_display_point<graphics_math_type> dp);
 			void dimensions(basic_display_point<graphics_math_type> dp, error_code& ec) noexcept;
 			void display_dimensions(basic_display_point<graphics_math_type> dp);

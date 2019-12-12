@@ -44,7 +44,7 @@ namespace std::experimental::io2d {
 			struct _Cairo_graphics_surfaces<GraphicsMath>::surfaces::_Output_surface_data {
 				_Display_surface_data_type data;
 				::std::function<void(basic_output_surface<_Graphics_surfaces_type>&)> draw_callback;
-				::std::function<void(basic_output_surface<_Graphics_surfaces_type>&)> size_change_callback;
+				::std::function<void(basic_output_surface<_Graphics_surfaces_type>&,basic_display_point<graphics_math_type>&&)> size_change_callback;
                 ::std::function<void(SDL_Event&)> event_callback;
                 ::std::function<basic_bounding_box<GraphicsMath>(const basic_output_surface<_Graphics_surfaces_type>&, bool&)> user_scaling_callback;
 			};
@@ -251,7 +251,7 @@ namespace std::experimental::io2d {
 				data->draw_callback = fn;
 			}
 			template<class GraphicsMath>
-			inline void _Cairo_graphics_surfaces<GraphicsMath>::surfaces::size_change_callback(output_surface_data_type& data, function<void(basic_output_surface<_Graphics_surfaces_type>&)> fn) {
+			inline void _Cairo_graphics_surfaces<GraphicsMath>::surfaces::size_change_callback(output_surface_data_type& data, function<void(basic_output_surface<_Graphics_surfaces_type>&,basic_display_point<graphics_math_type>&&)> fn) {
 				data->size_change_callback = fn;
 			}
 			template<class GraphicsMath>
@@ -261,6 +261,7 @@ namespace std::experimental::io2d {
 			template<class GraphicsMath>
 			inline void _Cairo_graphics_surfaces<GraphicsMath>::surfaces::dimensions(output_surface_data_type& data, const basic_display_point<GraphicsMath>& val) {
 				_Ds_dimensions<_Cairo_graphics_surfaces<GraphicsMath>>(data->data, val);
+                _Create_display_surface_and_context<GraphicsMath>(data->data);
 			}
 			template<class GraphicsMath>
 			inline void _Cairo_graphics_surfaces<GraphicsMath>::surfaces::scaling(output_surface_data_type& data, io2d::scaling val) {

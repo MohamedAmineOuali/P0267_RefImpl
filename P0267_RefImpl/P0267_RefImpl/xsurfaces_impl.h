@@ -277,7 +277,7 @@ namespace std {
 					GraphicsSurfaces::surfaces::draw_callback(_Data, fn);
 				}
 				template <class GraphicsSurfaces>
-				inline void basic_output_surface<GraphicsSurfaces>::size_change_callback(const function<void(basic_output_surface& sfc)>& fn) {
+				inline void basic_output_surface<GraphicsSurfaces>::size_change_callback(const function<void(basic_output_surface&, basic_display_point<graphics_math_type>&&)>& fn) {
 					GraphicsSurfaces::surfaces::size_change_callback(_Data, fn);
 				}
 

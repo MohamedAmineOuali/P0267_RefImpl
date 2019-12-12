@@ -291,7 +291,11 @@ namespace std::experimental::io2d {
 
 					SDL_Event ev;
 					while (SDL_PollEvent(&ev)) {
-					    if(osd->event_callback)
+					    if(ev.type==SDL_WINDOWEVENT){
+					        if(ev.window.event==SDL_WINDOWEVENT_SIZE_CHANGED)
+					            osd->size_change_callback(sfc,basic_display_point<graphics_math_type>(ev.window.data1,ev.window.data2));
+					    }
+					    else if(osd->event_callback)
 					        osd->event_callback(ev);
 					}
 

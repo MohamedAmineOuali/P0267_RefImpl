@@ -542,7 +542,7 @@ namespace std {
 
                             // display_surface common functions
 							static void draw_callback(output_surface_data_type& data, function<void(basic_output_surface<_Graphics_surfaces_type>&)>);
-							static void size_change_callback(output_surface_data_type& data, function<void(basic_output_surface<_Graphics_surfaces_type>&)>);
+							static void size_change_callback(output_surface_data_type& data, function<void(basic_output_surface<_Graphics_surfaces_type>&,basic_display_point<graphics_math_type>&&)>);
 							static void user_scaling_callback(output_surface_data_type& data, function<basic_bounding_box<GraphicsMath>(const basic_output_surface<_Graphics_surfaces_type>&, bool&)>);
 							static void dimensions(output_surface_data_type& data, const basic_display_point<GraphicsMath>& val);
 							static void scaling(output_surface_data_type& data, io2d::scaling val);
